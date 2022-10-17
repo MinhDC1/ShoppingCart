@@ -1,0 +1,23 @@
+<div class="home-container">
+  <div class="products">
+
+    <div class="products__header">
+      <h2>New Products</h2>
+    </div>
+
+    <div *ngIf="loading" class="products__loading">
+      <ng-template #indicatorTemplate>
+        <i
+          nz-icon
+          nzType="loading"
+          [ngStyle]="{ 'font-size': '2rem', margin: '0 auto' }"
+        ></i>
+      </ng-template>
+      <nz-spin nzSimple [nzIndicator]="indicatorTemplate"> </nz-spin>
+    </div>
+
+    <div class="products__list" *ngIf="!loading">
+      <app-products></app-products>
+    </div>
+  </div>
+</div>

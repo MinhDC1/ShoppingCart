@@ -1,0 +1,46 @@
+<!--<div class="product-container" *ngIf="!loading">-->
+<div class="product-container" *ngFor="let order of productOrders">
+  <!--<ul fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">-->
+  <ul>
+
+      <!--<app-product *ngFor="let p of products" [product]="p"></app-product>-->
+      <!--<mat-card class="" [routerLink]="'product/' + order.product.id">-->
+        <mat-card class="" [routerLink]="">
+        <div class="title">
+          <mat-card-title>{{ order.product.name }}</mat-card-title>
+        </div>
+        <img mat-card-image [src]="order.product.pictureUrl" />
+        <div class="price-container">
+          <div class="price">
+             <!--<mat-card-subtitle>{{order.product.price | currency: "CAD"}}</mat-card-subtitle>-->
+             <h3>{{order.product.price | currency: "CAD"}}</h3>
+          </div>
+        </div>
+        <div class="" *ngIf="!isProductSelected(order.product)">
+          <input type="number" min="0" class="form-control"
+            [(ngModel)]="order.quantity">
+        </div>
+        <div class="cta">
+          <!--<div class="add-to-cart" *ngIf="!isProductSelected(order.product)">-->
+            <div class="add-to-cart">
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="addToCart(order)" [disabled]="order.quantity <= 0">
+                  Add To Cart
+              </button>
+            </mat-card-actions>
+          </div>
+          <!--
+          <div class="add-to-cart" *ngIf="isProductSelected(order.product)">
+            <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="removeFromCart(order)">
+                Remove FromCart
+              </button>
+            </mat-card-actions>
+          </div>
+        -->
+        </div>
+
+      </mat-card>
+
+  </ul>
+</div>

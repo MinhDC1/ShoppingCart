@@ -1,0 +1,87 @@
+<div class="checkout-container">
+  <div class="progress-container">
+    <nz-progress
+      [nzPercent]="getProgressPrecent()"
+      [nzShowInfo]="false"
+      [nzStrokeWidth]="3"
+    ></nz-progress>
+  </div>
+  <!-- FIRST STEP -->
+  <div *ngIf="currentStep === 1">
+    <div class="summary-container">
+      <div class="summary-container__order">
+        <h2>Order Summary</h2>
+        <div class="details">
+          <div><span>Item(s)</span> {{ orders.productOrders.length }}</div>
+         <!--<div><span>Payment method</span> Credit</div>-->
+          <div>
+            <span>Order total</span> {{ totalPrice | currency: "CAD" }}
+          </div>
+        </div>
+        <button
+          nz-button
+          nzType="primary"
+          (click)="submitCheckout()"
+          [nzLoading]="loading"
+          [disabled]="orders.productOrders.length === 0"
+        >
+          Place order
+        </button>
+      </div>
+      <div class="summary-container__items">
+        <h2>Order Items</h2>
+        <div class="item-list">
+          <div class="item-container" *ngFor="let item of orders.productOrders">
+            <div class="item-image">
+              <img [src]="item.product.pictureUrl" alt="" />
+            </div>
+            <div class="item-title">
+              {{ item.product.name }}
+            </div>
+            <div class="item-total">
+              {{ item.product.price | currency: "CAD" }} x {{ item.quantity }} =
+              {{ item.quantity * item.product.price | currency: "CAD" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- LAST STEP - THANK YOU -->
+  <div *ngIf="currentStep === 2">
+    <div class="confirmation-container">
+      <header>
+        <div class="title">
+          <h1>Thank you!</h1>
+          <p>Please check your email for the order confirmation</p>
+        </div>
+        <!--
+        <div class="order-id">
+          Order ID: <span>{{ orderId }}</span>
+        </div>
+      -->
+      </header>
+      <button nz-button class="cta-button" routerLink="/">
+        Continue shopping
+      </button>
+      <div class="products-container">
+        <h2>Order Summary</h2>
+        <div class="products-container__list">
+          <div class="list-item" *ngFor="let item of orders.productOrders">
+            <div class="item-image">
+              <img [src]="item.product.pictureUrl" alt="" />
+            </div>
+            <div class="item-title">
+              {{ item.product.name }}
+            </div>
+            <div class="item-total">
+              {{ item.product.price | currency: "CAD" }} x {{ item.quantity }} =
+              {{ item.quantity * item.product.price | currency: "CAD" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
