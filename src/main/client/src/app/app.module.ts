@@ -24,7 +24,6 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-import { OrdersComponent } from './orders/orders.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
     HeaderComponent,
     ProductsComponent,
     CartComponent,
-    OrdersComponent,
     CheckoutComponent
   ],
   imports: [

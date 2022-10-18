@@ -1,10 +1,6 @@
-<!--<div class="product-container" *ngIf="!loading">-->
 <div class="product-container" *ngFor="let order of productOrders">
-  <!--<ul fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">-->
   <ul>
-
-      <!--<app-product *ngFor="let p of products" [product]="p"></app-product>-->
-      <!--<mat-card class="" [routerLink]="'product/' + order.product.id">-->
+<!--<mat-card class="" [routerLink]="'product/' + order.product.id">-->
         <mat-card class="" [routerLink]="">
         <div class="title">
           <mat-card-title>{{ order.product.name }}</mat-card-title>
